@@ -34,6 +34,11 @@ const router = createRouter({
       name: 'calendario',
       component: () => import('../views/CalendarioView.vue'),
     },
+    {
+      path: '/alarmas/crear',
+      name: 'crear-alarma',
+      component: () => import('../views/CrearAlarmaView.vue'),
+    },
   ],
 })
 

@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import AppSidebar from '@/components/AppSidebar.vue'
 import BuscadorBar from '@/components/BuscadorBar.vue'
 import CalendarioCard from '@/components/CalendarioCard.vue'
 import { alarmasDeHoy, resumen } from '@/data/alarmas'
 
 const busqueda = ref('')
+const router = useRouter()
 </script>
 
 <template>
   <AppSidebar />
 
   <div class="min-h-full bg-neutral-secondary-soft p-6 sm:ml-64">
-    <h1 class="text-2xl font-semibold text-heading mb-6">Inicio</h1>
+    <div class="flex items-center justify-between gap-4 mb-6"><h1 class="text-2xl font-semibold text-heading">Inicio</h1><button type="button" class="text-white bg-brand box-border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" @click="router.push('/alarmas/crear')">Crear alarma</button></div>
 
     <div class="mb-6">
       <BuscadorBar v-model="busqueda" />
