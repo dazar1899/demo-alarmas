@@ -1,42 +1,39 @@
-# .
+# Alarmas compartidas — web
 
-This template should help get you started developing with Vue 3 in Vite.
+Prototipo navegable de las pantallas web. Las acciones son demostrativas: no hay servidor ni persistencia de alarmas.
 
-## Recommended IDE Setup
+## Tecnologías
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue 3, Vue Router 5, TypeScript 6 y Vite 8.
+- Tailwind CSS 4 y Flowbite 4 para los estilos y componentes. Se reutilizan las clases de botones, campos y estados de foco que ya tenía el proyecto.
+- Pinia 4 está instalada, aunque las vistas actuales no usan una tienda global.
+- Fuente Inter. El proyecto original ya incluía un modal de Flowbite, un calendario con Datepicker y el menú lateral.
 
-## Recommended Browser Setup
+Flowbite corresponde a la versión web. La aplicación móvil se desarrolla por separado con Flutter.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Ejecutar
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Requiere Node.js 22.18 o 24.12 en adelante.
 
 ```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
+npm ci
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Para comprobar el proyecto: `npm run build`.
 
-```sh
-npm run build
-```
+## Pantallas
+
+| Ruta | Vista |
+| --- | --- |
+| `/` | Login |
+| `/inicio` | Inicio |
+| `/amigos` | Amigos |
+| `/grupos` | Grupos |
+| `/grupos/crear` | Crear grupo |
+| `/calendario` | Calendario |
+| `/alarmas/crear` | Crear alarma personal o grupal |
+| `/alarmas/pendientes` | Alarmas pendientes |
+| `/alarmas/sonando` | Alarma sonando y panel para posponer |
+
+Cada vista agregada tiene su propio commit `feat(...)` para que pueda revisarse por separado.
