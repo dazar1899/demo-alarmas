@@ -3,11 +3,16 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Datepicker } from 'flowbite'
 import { diasConAlarma } from '@/data/alarmas'
 
+const props = withDefaults(defineProps<{ monthOffset?: number; compact?: boolean }>(), {
+  monthOffset: 0,
+  compact: false,
+})
 const contenedor = ref<HTMLDivElement | null>(null)
 
 /** El datepicker arranca con el día de hoy seleccionado (formato mm/dd/yyyy). */
 const hoy = new Date()
-const fechaInicial = [hoy.getMonth() + 1, hoy.getDate(), hoy.getFullYear()]
+const mesMostrado = new Date(hoy.getFullYear(), hoy.getMonth() + props.monthOffset, 1)
+const fechaInicial = [mesMostrado.getMonth() + 1, mesMostrado.getDate(), mesMostrado.getFullYear()]
   .map((n, i) => (i < 2 ? String(n).padStart(2, '0') : String(n)))
   .join('/')
 let observador: MutationObserver | null = null
@@ -20,7 +25,8 @@ function marcarDiasConAlarma() {
     const timestamp = Number(celda.dataset.date)
     const dia = Number.isNaN(timestamp) ? NaN : new Date(timestamp).getDate()
     const esDelMes = !celda.classList.contains('prev') && !celda.classList.contains('next')
-    celda.classList.toggle('has-alarm', esDelMes && diasConAlarma.includes(dia))
+    const esMesActual = props.monthOffset === 0
+    celda.classList.toggle('has-alarm', esMesActual && esDelMes && diasConAlarma.includes(dia))
   })
 }
 
@@ -40,7 +46,7 @@ onBeforeUnmount(() => observador?.disconnect())
   <div class="bg-neutral-primary-soft border border-default rounded-base shadow-xs p-3">
     <div ref="contenedor" inline-datepicker :data-date="fechaInicial" class="calendario"></div>
 
-    <div class="flex items-center gap-3 px-2 pb-1">
+    <div v-if="!compact" class="flex items-center gap-3 px-2 pb-1">
       <button
         type="button"
         class="flex-1 text-heading bg-neutral-primary-soft box-border border border-default-medium hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"

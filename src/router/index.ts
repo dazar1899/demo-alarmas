@@ -29,6 +29,11 @@ const router = createRouter({
       name: 'crear-grupo',
       component: () => import('../views/CrearGrupoView.vue'),
     },
+    {
+      path: '/calendario',
+      name: 'calendario',
+      component: () => import('../views/CalendarioView.vue'),
+    },
   ],
 })
 
