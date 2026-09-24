@@ -39,6 +39,11 @@ const router = createRouter({
       name: 'crear-alarma',
       component: () => import('../views/CrearAlarmaView.vue'),
     },
+    {
+      path: '/alarmas/pendientes',
+      name: 'alarmas-pendientes',
+      component: () => import('../views/AlarmasPendientesView.vue'),
+    },
   ],
 })
 
