@@ -108,6 +108,7 @@ const router = useRouter()
             <button
               type="button"
               class="shrink-0 text-heading bg-neutral-primary-soft box-border border border-default-medium hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium rounded-base p-2 focus:outline-none"
+              @click="router.push('/alarmas/sonando')"
             >
               <span class="sr-only">Opciones de {{ alarma.titulo }}</span>
               <svg
