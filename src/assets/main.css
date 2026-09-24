@@ -1,35 +1,40 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
 
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/*
+ * Color primario del proyecto: #1971C2.
+ * El tema de Flowbite deriva todos sus tonos de marca de estos tokens,
+ * así que redefinirlos aquí repinta botones, enlaces, focus rings y el
+ * calendario sin tocar cada clase.
+ */
+:root {
+  --color-brand-softer: #e7f5ff;
+  --color-brand-soft: #d0ebff;
+  --color-brand-medium: #a5d8ff;
+  --color-brand-subtle: #a5d8ff;
+  --color-brand-light: #228be6;
+  --color-brand: #1971c2;
+  --color-brand-strong: #1864ab;
+
+  --color-fg-brand-subtle: #a5d8ff;
+  --color-fg-brand: #1971c2;
+  --color-fg-brand-strong: #145591;
+}
+
+html,
+body,
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  height: 100%;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
