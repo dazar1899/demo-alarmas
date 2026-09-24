@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const usuario = ref('')
 const contrasena = ref('')
 const recordarme = ref(false)
 
+const router = useRouter()
+
 function onSubmit() {
-  // TODO: conectar con el servicio de autenticación.
-  console.log('login', { usuario: usuario.value, recordarme: recordarme.value })
+  // Mockup: sin backend todavía, el ingreso lleva directo al inicio.
+  router.push('/inicio')
 }
 </script>
 
