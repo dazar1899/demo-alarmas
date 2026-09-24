@@ -24,6 +24,11 @@ const router = createRouter({
       name: 'grupos',
       component: () => import('../views/GruposView.vue'),
     },
+    {
+      path: '/grupos/crear',
+      name: 'crear-grupo',
+      component: () => import('../views/CrearGrupoView.vue'),
+    },
   ],
 })
 
